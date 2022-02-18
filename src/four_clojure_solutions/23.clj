@@ -20,3 +20,12 @@
       r
       (recur (conj r (first coll)) (rest coll))))
   )
+
+;My solution 3
+#(reduce conj () %)
+
+;Other solution
+;reduce (fn [x y] (cons y x)) []
+;x = initial value, i.e []
+;y = collection
+#(reduce (fn [init coll] (cons coll init)) [] %)
