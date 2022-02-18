@@ -25,7 +25,7 @@
 #(reduce conj () %)
 
 ;Other solution
-;reduce (fn [x y] (cons y x)) []
-;x = initial value, i.e []
-;y = collection
+;a = initial value, i.e []
+;b = the sample collection provided by the question
+;#(reduce (fn [a b] (cons b a)) [] %)
 #(reduce (fn [init coll] (cons coll init)) [] %)
