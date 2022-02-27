@@ -10,3 +10,7 @@
 
 ;My solution 1
 #(reduce + %)
+
+;Other solution 1
+;#(apply + %)
+; (#(apply + %)[1 2 3]) is the same as (+ 1 2 3)
