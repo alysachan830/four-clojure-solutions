@@ -1,11 +1,43 @@
 (ns four-clojure-solutions.26)
-; Still solving..
-;(defn getf [x]
-;  (loop [start 0 sum 0 r ()]
-;    (if (== x start)
-;      r
-;      (if (< (count r) 2)
-;        (recur (inc start) (+ start sum) (conj r start))
-;        (recur (inc start) (+ sum (first r)) (conj r (+ sum (first r))))
-;        ))
-;    ))
+
+;Write a function which returns the first X fibonacci numbers.
+;
+;(= (__ 3) '(1 1 2))
+;(= (__ 6) '(1 1 2 3 5 8))
+;(= (__ 8) '(1 1 2 3 5 8 13 21))
+
+; =================================================
+
+; My solution
+; Logic:
+; The number to be added in the list equals to
+; the sum of the first 2 numbers in the list in the previous loop
+
+; recur does 2 things:
+; - save the sum for the next loop
+; - conj the list with the sum saved from the previous loop
+
+; Example: print first 4 fibonacci numbers
+
+; After 1st loop (by default we add 0 if the list is empty initially, by using "or"):
+; 1 1 (1)
+;   ^
+; After 2nd loop:
+; 2 2 (1 1)
+;   ^  ^
+; After 3rd loop:
+; 3 3 (2 1 1)
+;   ^  ^
+; After 4th loop:
+; 4 5 (3 2 1 1)
+;   ^  ^
+; reverse (3 2 1 1)
+; return (1 1 2 3)
+
+(fn [x]
+  (loop [start 0 sum 1 r ()]
+    (if (== x start)
+      (reverse r)
+      (recur (inc start) (+ sum (or (first r) 0)) (conj r sum))
+      )
+    ))
