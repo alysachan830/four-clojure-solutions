@@ -41,3 +41,20 @@
       (recur (inc start) (+ sum (or (first r) 0)) (conj r sum))
       )
     ))
+
+; Other solution 1
+; It has the same logic mentioned above
+;(fn [n]
+;  (loop [col [] oldSum 1 sum 1 t 0]
+;  (if (== t n)
+;    col
+;    (recur (conj col oldSum) sum (+ oldSum sum) (inc t))
+;    ))
+;  )
+
+
+; Other solution 2
+; Still studying...
+;#(take %
+;       (map first
+;            (iterate (fn [[a b]] [b (+ a b)]) [1 1])))
