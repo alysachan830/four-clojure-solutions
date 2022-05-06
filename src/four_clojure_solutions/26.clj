@@ -8,7 +8,7 @@
 
 ; =================================================
 
-; My solution
+; My solution 1
 ; Logic:
 ; The number to be added in the list equals to
 ; the sum of the first 2 numbers in the list in the previous loop
@@ -42,6 +42,15 @@
       )
     ))
 
+; My solution 2
+(fn [n]
+  (loop [counter 0 list [] acc 1]
+    (if (= counter n)
+      list
+      (recur (inc counter)
+             (conj list acc)
+             (+ (or (last list) 0) acc)))))
+
 ; Other solution 1
 ; It has the same logic mentioned above
 ;(fn [n]
@@ -55,6 +64,6 @@
 
 ; Other solution 2
 ; Still studying...
-;#(take %
-;       (map first
-;            (iterate (fn [[a b]] [b (+ a b)]) [1 1])))
+#(take %
+       (map first
+            (iterate (fn [[a b]] [b (+ a b)]) [1 1])))
