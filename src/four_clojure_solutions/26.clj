@@ -63,7 +63,6 @@
 
 
 ; Other solution 2
-; Still studying...
 #(take %
        (map first
             (iterate (fn [[a b]] [b (+ a b)]) [1 1])))
